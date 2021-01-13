@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days Until Isaac Comes Back</title>
+    <!-- Inline styles, just how Isaac likes it ;) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+        body, html {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            overflow: none;
+            background: #222;
+            color: #fff;
+            font-family: "Montserrat", sans-serif;
+            font-size: 5vw;
+            user-select: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="timer"></h1>
+
+    <script>
+        var countDownDate = new Date("Jan 25, 2021 7:45:00").getTime();
+
+        var x = setInterval(function () {
+
+            var now = new Date().getTime();
+
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h " +
+                minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "HES BACCCK";
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
